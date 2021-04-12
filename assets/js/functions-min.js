@@ -94,3 +94,70 @@ var createLines = function() {
 };
 
 createLines();
+
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+//////////////////////////////////////////////
+///Gallery///
+/////////////////////////////////////////////
+/////////////////////////////////////////
+///////////////////////////////////////////////
+
+const dots = document.querySelectorAll(".dot");
+const slides = document.querySelectorAll(".slide");
+const buttons = document.querySelectorAll(".buttons");
+
+dots.forEach((item, index) => {
+  item.addEventListener("click", function() {
+    removeClass();
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+  });
+});
+
+const removeClass = () => {
+  slides.forEach(item => {
+    item.classList.remove("active");
+  });
+  dots.forEach(item => {
+    item.classList.remove("active");
+  });
+};
+
+const buttonHandle = () => {
+  const activeSlide = document.querySelector(".active");
+  let ourIndex = 0;
+  slides.forEach((item, index) => {
+    if (item === activeSlide) {
+      removeClass();
+      if (index == 0) {
+        ourIndex = 2;
+      } else {
+        ourIndex = index - 1;
+      }
+      slides[ourIndex].classList.add("active");
+      dots[ourIndex].classList.add("active");
+    }
+  });
+};
+
+const buttonHandle1 = () => {
+  const activeSlide = document.querySelector(".active");
+  let ourIndex = 0;
+  slides.forEach((item, index) => {
+    if (item === activeSlide) {
+      removeClass();
+      if (index == 2) {
+        ourIndex = 0;
+      } else {
+        ourIndex = index + 1;
+      }
+      slides[ourIndex].classList.add("active");
+      dots[ourIndex].classList.add("active");
+    }
+  });
+};
+
+buttons[0].addEventListener("click", buttonHandle);
+buttons[1].addEventListener("click", buttonHandle1);

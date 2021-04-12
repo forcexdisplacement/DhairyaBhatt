@@ -10,7 +10,14 @@
   <meta name="author" content="Dhairya Bhatt">
   <meta name="theme-color" content="#0F33FF">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/js/jquery.flipster.min.css">
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/bas.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/OrbitControls-2.js"></script>
+
   <script src="pace.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-bez@1.0.11/src/jquery.bez.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
@@ -65,6 +72,7 @@
             <li class="is-active"><span>Home</span></li>
             <li><span>Works</span></li>
             <li><span>About</span></li>
+            <li><span>Gallery</span></li>
             <li><span>Meet Us</span></li>
             <li><span>Contact Us</span></li>
           </ul>
@@ -94,7 +102,7 @@
                 </button>
               </div>
               <div class="intro--options">
-                <a href="https://dhairya-bhatt.wixsite.com/i-qr">
+                <a href="https://www.dhairya-bhatt.wixsite.com/i-qr">
                   <h3>CIF Wining Entry</h3>
                   <p>Our idea (I-QR) has be selected as the winner of Child Innovation Festival.</p>
                 </a>
@@ -102,7 +110,7 @@
                   <h3>YouTube 300+ Subscribers</h3>
                   <p>We have successfully managed to reach our subscriber count to 300+ </p>
                 </a>
-                <a href="#0">
+                <a href="https://www.mathspublishing.com">
                   <h3>Axis F.C</h3>
                   <p>We have our own Football Club too..</p>
                 </a>
@@ -189,6 +197,25 @@
                 </a>
               </div>
             </div>
+          </li>
+
+
+
+          <li id="Gallery" class="l-section section">
+            <div class="hero">
+              <div class="carousel">
+                <ul>
+                  <li><img src="assets/img/Gallery image 1.webp" alt=""></li>
+                  <li><img src="assets/img/Gallery image 2.webp" alt=""></li>
+                  <li><img src="assets/img/Gallery image 3.webp" alt=""></li>
+                  <li><img src="assets/img/Gallery image 4.webp" alt=""></li>
+                  <li><img src="assets/img/Gallery image 5.webp" alt=""></li>
+                  <li><img src="assets/img/Gallery image 6.webp" alt=""></li>
+                </ul>
+              </div>
+            </div>
+        
+
           </li>
           <li class="l-section section">
             <div class="contact">
@@ -282,6 +309,7 @@
     <li class="is-active">Home</li>
     <li>Works</li>
     <li>About</li>
+    <li>Gallery</li>
     <li>Meet Us</li>
     <li>Contact Us</li>
   </ul>
@@ -297,5 +325,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
+<script src="assets/js/jquery.flipster.min.js"></script>
+<script>
+  $('.carousel').flipster({
+    style: 'carousel',
+    spacing: -0.3
+    });
+</script>
 </body>
 </html>
