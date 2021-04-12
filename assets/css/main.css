@@ -68,22 +68,24 @@ html{
 }
 
 .hero{
-    position: relative;
-    width: 100%;
-    top: auto;
-    left: 100px;
-    height: 100vh;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     background-color: #000;
-    overflow: hidden;
+    overflow: visible;
+    opacity: 1;
 }
 .hero .carousel{
     top: 120px;
     width: 300px;
     margin: 0 500px;
     overflow: visible;
+    opacity: 1;
 }
 .carousel img{
     -webkit-box-reflect: below 20px linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.1));
+    opacity: 1;
 }
 
 
@@ -288,13 +290,13 @@ td,th{
     padding:0
 }
 ::-moz-selection{
-    background:#0f33ff
+    background:#ff0000
 }
 ::selection{
-    background:#0f33ff
+    background:#ff0000
 }
 ::-moz-selection{
-    background:#0f33ff
+    background:#ff0000
 }
 img::-moz-selection{
     background:transparent
@@ -461,12 +463,54 @@ path {
 @media(max-width: 432px)and (min-height: 936px) {
     .hero{
         position: absolute;
-        width: 100%;
-        height: 100vh;
+        left: 0px;
         background-color: #000;
         overflow: hidden;
-    } .three-container{padding-right: 10px;}.l-wrapper{margin: auto, auto;}.front-text{padding-bottom: 30px;} .intro .intro--options h3,p{color: #fff;} .intro .intro--banner .cta button{position:relative; padding-bottom: -200px;} }
-@media (max-width: 767px) and (min-width: 601px) and (max-height: 680px){
+        opacity: 1;
+    }
+    .hero .carousel{
+        position: absolute;
+        width: 100%;
+        opacity: 1;
+        height: 100%;
+    } 
+    .hero .carousel{
+        top: 120px;
+        width: 300px;
+        margin: 0 500px;
+        overflow: visible;
+        opacity: 1;
+    }
+    .carousel img{
+        -webkit-box-reflect: below 20px linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.1));
+        opacity: 1;
+    }
+    
+    .three-container{padding-right: 10px;}.l-wrapper{margin: auto, auto;}.front-text{padding-bottom: 30px;} .intro .intro--options h3,p{color: #fff;} .intro .intro--banner .cta button{position:relative; padding-bottom: -200px;} }
+@media (max-width: 767px) and (min-width: 601px) and (max-height: 680px){    .hero{
+    position: absolute;
+    left: 0px;
+    background-color: #000;
+    overflow: hidden;
+    opacity: 1;
+ }
+ .hero .carousel{
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+     height: 100%; 
+ } 
+ .hero .carousel{
+    top: 120px;
+    width: 300px;
+    margin: 0 500px;
+    overflow: visible;
+    opacity: 1;
+ }
+ .carousel img{
+    -webkit-box-reflect: below 20px linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.1));
+    opacity: 1;
+ }
     .front-text span{padding: 10px;}.device-notification{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}}
 @media (max-width: 600px) and (min-width: 480px) and (max-height: 580px){.device-notification{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}}
 @media (max-width: 736px) and (min-width: 360px) and (orientation: landscape){.device-notification{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}}
