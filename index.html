@@ -9,8 +9,13 @@
   <meta name="keywords" content="global, template, html, sass, jquery">
   <meta name="author" content="Dhairya Bhatt">
   <meta name="theme-color" content="#0F33FF">
+  <link rel="shortcut icon" href="assets/img/DHAIRYA BHATT AM_free-file.png">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="../package/swiper-bundle.min.css">
+
+  <link rel="stylesheet" href="../package/swiper-bundle.min.css">
   <link rel="stylesheet" href="assets/js/jquery.flipster.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js"></script>
 
@@ -202,19 +207,19 @@
 
 
           <li id="Gallery" class="l-section section">
-            <div class="hero">
-              <div class="carousel">
-                <ul>
-                  <li><img src="assets/img/Gallery image 1.webp" alt=""></li>
-                  <li><img src="assets/img/Gallery image 2.webp" alt=""></li>
-                  <li><img src="assets/img/Gallery image 3.webp" alt=""></li>
-                  <li><img src="assets/img/Gallery image 4.webp" alt=""></li>
-                  <li><img src="assets/img/Gallery image 5.webp" alt=""></li>
-                  <li><img src="assets/img/Gallery image 6.webp" alt=""></li>
-                </ul>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img width="100%" height="100%" color="radial-gradient(rgba(transparent,rgba(255,255,255,0.3)))" src="assets/img/Gallery image 1.webp"></div>
+                <div class="swiper-slide"><img width="100%" height="100%" src="assets/img/Gallery image 2.webp"></div>
+                <div class="swiper-slide"><img width="100%" height="100%" src="assets/img/Gallery image 3.webp"></div>
+                <div class="swiper-slide"><img width="100%" height="100%" src="assets/img/Gallery image 4.webp"></div>
+                <div class="swiper-slide"><img width="100%" height="100%" src="assets/img/Gallery image 5.webp"></div>
+                <div class="swiper-slide"><img width="100%" height="100%" src="assets/img/Gallery image 6.webp"></div>
               </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
             </div>
-        
+
 
           </li>
           <li class="l-section section">
@@ -332,5 +337,27 @@
     spacing: -0.3
     });
 </script>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 20,
+      stretch: 0,
+      depth: 200,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+  </script>
+
 </body>
 </html>
