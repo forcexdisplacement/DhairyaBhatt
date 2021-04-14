@@ -17,45 +17,69 @@
     src:local("☺"),url("fonts/Montserrat-Light.woff") format("woff"),url("fonts/Montserrat-Light.ttf") format("truetype"),url("fonts/Montserrat-Light.svg") format("svg");font-weight:300;font-style:normal}
 
 /* PreLoader*/
-
 .preloader{
     position: absolute;
-    top: 0%;
-    left: 0%;
     width: 100%;
     height: 100%;
-    background: black;
+    background: var( --background-col );
+    padding: 0;
+    margin:0;
+    justify-content:center;
+    z-index: 9999;
+    align-items:center;
+    --foreground-col: rgb(255, 255, 255);
+    --background-col: rgb(0, 0, 0);
 }
 
-.svglogo{
+#svg8{
     position: absolute;
-    background-color: black;
-    z-index: 999;
-    width: 100%;
-    height: 100vh;
-    top: 0%;
-    left: 0%;
-    animation: filllogo 0.5s ease forwards;
-}
-.logo-ani{
-    position: fixed;
-    top: 40%;
-    left: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
 }
 
+.logo-ani{width: 100%;}
 
-.svglogo #logo text tspan:nth-child(1){
-    stroke-dasharray: 572;
-    stroke-dashoffset: 572;
-    animation: logo-animation 3s ease forwards;
+.preloader.invert {
+    --foreground-col: #000;
+    --background-col: #fff;
+}
+button {
+    position: absolute;
+    top: 10px;
+    right:10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+svg {
+    width: 50vw;
+    
+}
+#outline {
+    fill:none;
+    stroke: var( --foreground-col );
+    stroke-width: .1px;
+}
+#load1 {
+    fill: var( --foreground-col );
+    stroke-width: 0px;
+    animation: loading 6s linear;
+}
+#mask1 {
+    fill: var( --background-col );
+    stroke-width: 0px;
 }
 
-@keyframes logo-animation {
-    to{
-        stroke-dashoffset: 0;
+@keyframes loading {
+    from {
+      y: 11.5px;
+    }
+    to {
+      y: -6px;
     }
 }
-
 
 
 
@@ -66,7 +90,20 @@ html{
     -ms-text-size-adjust:100%;
     -webkit-text-size-adjust:100%
 }
+.logo-ani{
+    position: relative;
+    top: -50px;
+}
+.logo-ani1{
+    position: relative;
+    top: -100px;
+}
 
+.cta{
+    position: relative;
+    left: 0px;
+    width: 150px;
+}
 .hero{
     position: absolute;
     top: 30%;
@@ -99,6 +136,112 @@ html{
     height: 100%;
 }
 
+.slider{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+  
+.slides{
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+  
+.slides input{
+    display: none;
+}
+  
+.slide{
+    width: 20%;
+    transition: 2s;
+}
+  
+.slide img{
+    width: 800px;
+    height: 500px;
+}
+  
+  /*css for manual slide navigation*/
+  
+.navigation-manual{
+    position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+  
+.manual-btn{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+  
+.manual-btn:not(:last-child){
+  margin-right: 40px;
+}
+  
+.manual-btn:hover{
+    background: #40D3DC;
+}
+  
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+  
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+  
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+  
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+  
+/*css for automatic navigation*/
+  
+.navigation-auto{
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 460px;
+}
+  
+.navigation-auto div{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+  
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #40D3DC;
+}
+  
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #40D3DC;
+}
+  
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #40D3DC;
+}
+  
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #40D3DC;
+}
+/* HEllo*/
+        
 canvas {
 	background-image: #000;
     position: absolute;
