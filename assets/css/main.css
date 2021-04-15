@@ -53,8 +53,8 @@ button {
     width: 40px;
     height: 40px;
 }
-svg {
-    width: 50vw;
+.preloader svg {
+    width: 90%;
     
 }
 #outline {
@@ -91,9 +91,12 @@ html{
     -webkit-text-size-adjust:100%
 }
 
+svg{
+    width: 100%;
+}
 
 
-.logo-ani{
+.logo-ani {
     position: relative;
     top: -50px;
     left: -10px;
