@@ -97,11 +97,13 @@ html{
     position: relative;
     top: -50px;
     left: -10px;
+    width: 100%;
 }
 .logo-ani1{
     position: relative;
     top: -100px;
     left: -10px;
+    width: 100%;
 }
 
 .cta{
