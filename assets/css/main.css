@@ -39,7 +39,7 @@
 
 }
 
-.logo-ani{width: 100%;}
+.logo-ani,.logo-ani1{width: 100%;}
 
 .preloader.invert {
     --foreground-col: #000;
@@ -96,10 +96,12 @@ html{
 .logo-ani{
     position: relative;
     top: -50px;
+    left: -10px;
 }
 .logo-ani1{
     position: relative;
     top: -100px;
+    left: -10px;
 }
 
 .cta{
