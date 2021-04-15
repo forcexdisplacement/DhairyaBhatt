@@ -39,20 +39,32 @@
 
 }
 
+.gallery-link, .music-link{
+    text-decoration: none;
+    color: transparent;
+    background-color: transparent;
+    fill: transparent;
+}
+
 .logo-ani,.logo-ani1{width: 100%;}
 
 .preloader.invert {
     --foreground-col: #000;
     --background-col: #fff;
 }
-button {
+.music{
     position: absolute;
-    top: 10px;
-    right:10px;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-40%);
 }
+.gallery{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 .preloader svg {
     width: 90%;
     
