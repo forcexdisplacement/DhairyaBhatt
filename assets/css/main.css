@@ -101,6 +101,7 @@ svg{
     top: -50px;
     left: -10px;
     width: 100%;
+    z-index: 999r;
 }
 .logo-ani1{
     position: relative;
