@@ -103,6 +103,8 @@ html{
     -webkit-text-size-adjust:100%
 }
 
+
+
 /*Gallery backgroung animation*/
 
 .container123 {
@@ -157,7 +159,19 @@ html{
     }
 }
 
-.music,.gallery{
+.newvideo{
+    color: #fff;
+    fill: #fff;
+}
+.newvideo .youtubevideo{
+    color: #fff;
+    fill: #fff;
+    text-decoration: none;
+}
+.newvideo a{
+    text-decoration: none;
+}
+.music,.gallery {
     color:white;
     height: 60px;
     width: 200px;
@@ -252,6 +266,10 @@ svg{
     position: relative;
     left: 0px;
     width: 150px;
+    text-decoration: none;
+}
+.cta a{
+    text-decoration: none;
 }
 .hero{
     position: absolute;
@@ -329,7 +347,8 @@ audio:not([controls]){
     background-color:transparent
 }
 a:active,a:hover{
-    outline:0
+    outline:0 ;
+    text-decoration: none;
 }
 abbr[title]{
     border-bottom:1px dotted
@@ -389,7 +408,9 @@ button,input,optgroup,select,textarea{
     margin:0
 }
 button{
-    overflow:visible
+    overflow:visible;
+    text-decoration: none;
+    fill: #fff;
 }
 button,select{
     text-transform:none
@@ -473,6 +494,7 @@ table{
 .intro .intro--banner button{
     position: absolute;
     top: 350px;
+    text-decoration: none;
 }
 td,th{
     padding:0
@@ -496,7 +518,8 @@ img::-moz-selection{
     background:transparent
 }
 body{
-    -webkit-tap-highlight-color:#0f33ff
+    -webkit-tap-highlight-color:#0f33ff;
+    text-decoration: none;
 }
 
 body{
@@ -505,6 +528,7 @@ body{
     line-height:1.6;
     font-family:"Montserrat",sans-serif;
     color:#fff;
+    text-decoration: none;
     -webkit-font-smoothing:antialiased;
     -webkit-text-size-adjust:100%
 }
@@ -513,14 +537,16 @@ body{
     width:100%;
     height:100vh;
     box-shadow:0 0 45px 5px rgba(0,0,0,0.85);
-    overflow:hidden
+    overflow:hidden;
+    text-decoration: none;
 }
 .l-wrapper{
     position:relative;
     width:1440px;
     max-width: 90%;
     height:100%;
-    margin:0 auto
+    margin:0 auto;
+    text-decoration: none;
 }
 .l-side-nav{
     position:absolute;
@@ -573,6 +599,14 @@ body{
     z-index: 0;
 }
 
+button {
+    text-decoration: none;
+    color: #fff;
+}
+
+::-webkit-textfield-decoration-container{
+    text-decoration: none;
+}
 path {
     height: 100vh;
     position: absolute;
@@ -580,7 +614,6 @@ path {
     stroke: #ddd;
     stroke-width: 0.50px;
     vector-effect: non-scaling-stroke;
-
 }
 
 
