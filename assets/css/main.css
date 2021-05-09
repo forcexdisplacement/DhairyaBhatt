@@ -16,7 +16,9 @@
 @font-face{font-family:'Montserrat';src:url("fonts/Montserrat-Light.eot");
     src:local("☺"),url("fonts/Montserrat-Light.woff") format("woff"),url("fonts/Montserrat-Light.ttf") format("truetype"),url("fonts/Montserrat-Light.svg") format("svg");font-weight:300;font-style:normal}
 
-/* PreLoader*/
+/*-----------------------------------------------
+--------------------- PreLoader------------------
+--------------------------------------------------*/
 .preloader{
     position: absolute;
     width: 100%;
@@ -95,26 +97,61 @@
 
 
 
-/*HTML*/
+/*---------------------------------------
+-----------------------------------------
+                -HTML-
+------------------------------------------
+----------------------------------------*/
   
 html{
     font-family:sans-serif;
     -ms-text-size-adjust:100%;
-    -webkit-text-size-adjust:100%
+    -webkit-text-size-adjust:100%;
+    background-color: black;
 }
 
 
+/*---------popup---------*/
+
+#onload-modal img{
+    position: absolute;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin:auto;
+    padding:50px;
+}
+#onload-modal{
+    position: absolute;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+    z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999;
+}
+
+@media 
+
+
+
+/*--------------------------------------------*/
 
 /*Gallery backgroung animation*/
 
 .container123 {
-    position: fixed;
-    top: 0%;
-    left: 0%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%,-50%);
     width: 800px;
     height: 800px;
     display: inline-block;
+    margin: 15px,15px,15px;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
@@ -180,9 +217,6 @@ html{
 }
 .music,.gallery {
     color:white;
-    height: 60px;
-    width: 200px;
-    padding-top: -100px;
     line-height: 0px;
     text-align:center;
     font-family: verdana;
@@ -257,14 +291,15 @@ svg{
 
 .logo-ani {
     position: relative;
-    top: -50px;
+    top: -70px;
     left: -10px;
     width: 100%;
     z-index: 999r;
 }
+
 .logo-ani1{
     position: relative;
-    top: -100px;
+    top: -150px;
     left: -10px;
     width: 100%;
 }
