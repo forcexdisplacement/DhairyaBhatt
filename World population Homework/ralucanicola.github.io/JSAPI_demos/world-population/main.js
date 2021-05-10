@@ -292,3 +292,112 @@ $(document).ready(function(){
         fadeDuration: 250
       });
     });
+
+
+
+
+$(document).ready(function() {
+        $(".popup").show();
+        $(".close").on('click', function() {
+          $(".overlay").hide();
+          $(".modal").hide();
+          $(".popup").hide();
+        });
+});
+
+
+function closePop(){
+        document.getElementById("modal");
+        modal.style.display="none";
+}
+
+$(function(){
+    var overlay = $('<div id="overlay"></div>');
+    overlay.show();
+    overlay.appendTo(document.body);
+    $('.modal').show();
+    $('.close').click(function(){
+    $('.modal').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+    });
+    
+    
+     
+    
+    $('.x').click(function(){
+    $('.popup').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+    });
+});
+
+
+
+document.getElementsByClassName("moadl")[0].classList.add("active");
+
+   
+document.getElementById("#close").addEventListener("click",function(){
+    document.getElementsByClassName(".overlay")[0].classList.add("active");
+});
+
+
+$(function(){
+    var overlay = $('<div id="overlay"></div>');
+    overlay.show();
+    overlay.appendTo(document.body);
+    $('.onload-modal').show();
+    $('.close').click(function(){
+    $('.onload-modal').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+    });
+    
+    
+     
+    
+    $('.x').click(function(){
+    $('.popup').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+    });
+});
+
+window.onload=function()
+{
+    var hidediv=document.getElementById('popup');
+    document.onclick=function(div)
+    {
+        if(div.target.id !=='popup')
+        {
+            hidediv.style.display='none';
+        }
+    };
+};
+
+
+document.querySelector('.close').addEventListener("click", function() {
+	document.querySelector('.modal').style.display = "none";
+});
+
+
+$(function(){
+    var overlay = $('<div id="overlay"></div>');
+    overlay.show();
+    overlay.appendTo(document.body);
+    $('.popup-onload').show();
+    $('.close').click(function(){
+    $('.popup-onload').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+    });
+    
+    
+     
+    
+    $('.x').click(function(){
+    $('.popup').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+    });
+    });

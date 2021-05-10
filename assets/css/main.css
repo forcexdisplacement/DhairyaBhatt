@@ -111,31 +111,196 @@ html{
 }
 
 
+
+/*----------------------------------
+-----------------------------
+----------Button-------------
+-----------------------------
+-------------------------------------*/
+
+
+
+/*----------------------------------------------------
+----------------------------
+--------------------------------*/
+
+
 /*---------popup---------*/
 
-#onload-modal img{
-    position: absolute;
-    background-color: #fff;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin:auto;
-    padding:50px;
-}
-#onload-modal{
-    position: absolute;
-    background-color: #fff;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: transparent;
-    z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999;
-}
 
-@media 
+
+
+
+
+
+.popup:not(:target){
+    display: none;
+}
+  
+.popup:target{
+    width: 100%;
+    height: 100vh;
+    
+    display: flex;
+   
+    position: fixed;
+    top: 0;
+    right: 0;  
+}
+  
+.popup::before{
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #fff;
+  
+    position: fixed;
+    left: 0;
+    top: 50%;
+}
+  
+.popup::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #f0f0f0;
+  
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;}
+  
+.popup__container{
+    box-sizing: border-box;  
+    padding: 5% 15%;
+  
+    height: calc(100vh - 40px); /* 1 */
+    margin: auto; /* 1 */
+    overflow: auto; /* 1 */
+    overscroll-behavior: contain; /* 1 */
+}
+  
+.popup__title{
+    --rTitleMarginBottom: 1.5rem;
+    font-size: 1.5rem;
+}
+  
+.popup__close{
+    width: 2rem;
+    height: 2rem;
+  
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+}
+  
+  /*
+  animation
+  */
+  
+.popup::before{
+    will-change: height, top;
+    animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+}
+  
+.popup::after{
+    will-change: width, opacity;
+    animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+}
+  
+@keyframes line-animation{
+  
+    0%{
+      width: 0;
+      opacity: 1;
+    }
+  
+    99%{
+      width: 100%;
+      opacity: 1;
+    }
+  
+    100%{
+      width: 100%;
+      opacity: 0;
+    }  
+}
+  
+@keyframes open-animation{
+  
+    0%{
+      height: 0;
+      top: 50%;
+    }
+  
+    100%{
+      height: 100vh;
+      top: 0;
+    }
+}
+  
+.popup__container{
+    animation: fade .5s ease-out 1.3s both;
+}
+  
+@keyframes fade{
+  
+    0%{
+      opacity: 0;
+    }
+  
+    100%{
+      opacity: 1;
+    }
+}
+  
+  /*
+  =====
+  DEMO
+  =====
+  */
+  
+body{
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
+    font-size: 1rem;
+    color: #222;
+    background-color: #512da8;
+    margin: 0;
+}
+  
+p{
+    margin: 0;
+    line-height: 1.5;
+}
+  
+p:nth-child(n+2){
+    margin-top: 1rem;
+}
+  
+.open-popup{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: .75rem 1.25rem;
+    border: 1px solid;
+}
+  
+.page{
+    min-height: 100vh;
+    display: flex;
+}
+  
+.page__container{
+    max-width: 1200px;
+    padding-left: .75rem;
+    padding-right: .75rem;  
+    margin: auto;
+}
 
 
 
@@ -145,9 +310,6 @@ html{
 
 .container123 {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
     width: 800px;
     height: 800px;
     display: inline-block;
@@ -168,12 +330,6 @@ html{
     animation-delay: calc(-1s * var(--i));
 }
 
-#school
-{
-    position: relative;
-    top: 100px;
-    left: auto;
-}
   
 @keyframes animate {
     0% {
@@ -203,85 +359,35 @@ html{
     }
 }
 
-.newvideo{
-    color: #fff;
-    fill: #fff;
+.buttons{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
-.newvideo .youtubevideo{
-    color: #fff;
-    fill: #fff;
+
+.music, .gallery, .school{
+    display: inline-block;
     text-decoration: none;
+    color: #bbb2e9;
+    font-size: 30px;
+    border: 100px;
+    border-color: chartreuse;
 }
-.newvideo a{
-    text-decoration: none;
+.school{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0;
 }
-.music,.gallery {
-    color:white;
-    line-height: 0px;
-    text-align:center;
-    font-family: verdana;
-    font-size: 24px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-.gallery:before{
-    content: '';
-    height: 90px;
-    width: 200px;
-    position: absolute;
-    top: -15px;
-    left: 0;
-    border-left:2px solid white;
-    border-right:2px solid white;
-    transition:1s;
-}
-.music:before{
-    content: '';
-    height: 90px;
-    width: 200px;
-    position: absolute;
-    top: -15px;
-    left: 0;
-    border-left:2px solid white;
-    border-right:2px solid white;
-    transition:1s;
-}
-.gallery:after{
-    content: '';
-    height: 60px;
-    width: 230px;
-    position: absolute;
-    top: 0;
-    left: -15px;
-    border-top:2px solid white;
-    border-bottom:2px solid white;
-    transition:1s;
-}
-.music:after{
-    content: '';
-    height: 60px;
-    width: 230px;
-    position: absolute;
-    top: 0;
-    left: -15px;
-    border-top:2px solid white;
-    border-bottom:2px solid white;
-    transition:1s;
-}
-.gallery:hover:before{
-    transform: rotateX(180deg);
-}
-.music:hover:before{
-    transform: rotateX(180deg);
-}
-.gallery:hover:after{
-    transform: rotateY(180deg);
-}
-.music:hover:after{
-    transform: rotateY(180deg);
-}
+
 /*Gallery backgroung animation*/
+
+/*______________________________________________________________*/
   
 
 svg{
