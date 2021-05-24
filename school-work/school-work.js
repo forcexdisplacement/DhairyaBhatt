@@ -1,420 +1,3 @@
-require([
-    "esri/layers/FeatureLayer",
-    "esri/Map",
-    "esri/views/SceneView",
-    "esri/renderers/SimpleRenderer",
-    "esri/symbols/PointSymbol3D",
-    "esri/symbols/ObjectSymbol3DLayer",
-    "esri/widgets/Legend",
-    "esri/core/watchUtils",
-    "dojo/domReady!"
-], function(
-    FeatureLayer,
-    Map, SceneView,
-    SimpleRenderer,
-    PointSymbol3D,
-    ObjectSymbol3DLayer,
-    Legend,
-    watchUtils
-) {
-    // create the graticule layer
-    var graticule = new FeatureLayer({
-        url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/World_graticule_15deg/FeatureServer",
-        opacity: 0.6,
-        legendEnabled: false
-    });
-
-    // create the map
-    var map = new Map({
-        layers: [graticule],
-        ground: {
-            surfaceColor: "#eaf2ff"
-        }
-    });
-
-    // create the view of the map
-    var view = new SceneView({
-        map: map,
-        container: "viewDiv",
-        camera: {
-            position: {
-                spatialReference: {
-                    latestWkid: 4326,
-                    wkid: 4326
-                },
-                x: 50.34885653510194,
-                y: 18.68409306191745,
-                z: 19134228.85529455
-            },
-            heading: 0,
-            tilt: 0.1
-        },
-        environment: {
-            background: {
-                type: "color",
-                color: "white"
-            },
-            atmosphereEnabled: false,
-            lighting: {
-                directShadowsEnabled: false,
-                date: "Sun Jul 15 2018 11:00:00 GMT+0200 (W. Europe Daylight Time)",
-                cameraTrackingEnabled: true,
-                ambientOcclusionEnabled: false
-            }
-        },
-        highlightOptions: {
-            color: "#ffee00",
-            fillOpacity: 0
-        }
-    });
-    view.ui.empty("top-left");
-    window.view = view;
-
-    const stops = [{
-            value: 0,
-            size: 100000,
-            color: "#FFFFE1"
-        },
-        {
-            value: 400000,
-            size: 250000,
-            color: "#F3758C"
-        },
-        {
-            value: 7000000,
-            size: 1500000,
-            color: "#7D2898"
-        },
-        {
-            value: 30000000,
-            size: 3500000,
-            color: "#4C1E6E"
-        }
-    ];
-
-    // generates a renderer based on the year attribute
-    function getRenderer(year) {
-        return new SimpleRenderer({
-            symbol: new PointSymbol3D({
-                symbolLayers: [new ObjectSymbol3DLayer({
-                    resource: {
-                        primitive: "cube"
-                    },
-                    anchor: "bottom",
-                    width: 80000
-                })]
-            }),
-            visualVariables: [{
-                type: "color",
-                field: "pop" + year,
-                stops: stops,
-                legendOptions: {
-                    title: "Number of persons/grid unit"
-                }
-            }, {
-                type: "size",
-                field: "pop" + year,
-                stops: stops,
-                axis: "height",
-                legendOptions: {
-                    showLegend: false
-                }
-            }, {
-                type: "size",
-                axis: "width-and-depth",
-                useSymbolValue: true, // uses the width value defined in the symbol layer (80,000)
-                legendOptions: {
-                    showLegend: false
-                }
-            }]
-        });
-    }
-
-    // create 5 population layers, one for each year
-    for (let i = 2000; i <= 2020; i += 5) {
-        const layer = new FeatureLayer({
-            url: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/World_population/FeatureServer",
-            opacity: 0,
-            outFields: ["*"],
-            renderer: getRenderer(i),
-            title: "Population " + i.toString(),
-            legendEnabled: false
-        });
-        map.layers.push(layer);
-    }
-
-    // utility function to get the layer currently displayed
-    function getCurrentLayer() {
-        const layer = map.layers.find(function(layer) {
-            return (layer.title === "Population " + currentYear);
-        });
-        return layer;
-    }
-
-    let popLayerView;
-    let oldLayer;
-    let currentHighlight = null;
-    let currentYear = 2000;
-    let currentLayer = getCurrentLayer();
-    const loader = document.getElementById("loader");
-
-    view.whenLayerView(currentLayer)
-        .then(function(lyrView) {
-            popLayerView = lyrView;
-            watchUtils.whenFalseOnce(popLayerView, "updating", function() {
-                fadeIn(currentLayer);
-                currentLayer.legendEnabled = true;
-                loader.style.display = "none";
-            });
-        });
-
-    function fadeIn(layer) {
-        const opacity = parseFloat((layer.opacity + 0.2).toFixed(2));
-        layer.opacity = opacity;
-        if (layer.opacity < 1) {
-            window.requestAnimationFrame(function() {
-                fadeIn(layer);
-            });
-        }
-    }
-
-    document.getElementById("populationYear").addEventListener("click", function(evt) {
-        this.getElementsByClassName("selected")[0].classList.remove("selected");
-        evt.target.className = "selected";
-        if (currentYear !== parseInt(evt.target.innerHTML)) {
-            oldLayer = currentLayer;
-            currentYear = parseInt(evt.target.innerHTML);
-            currentLayer = getCurrentLayer();
-            currentLayer.legendEnabled = true;
-            currentLayer.opacity = 1;
-            view.whenLayerView(currentLayer)
-                .then(function(layerView) {
-                    popLayerView = layerView;
-                });
-            oldLayer.opacity = 0;
-            oldLayer.legendEnabled = false;
-        }
-    });
-
-    view.on("pointer-move", function(event) {
-        view.hitTest(event).then(function(response) {
-                var result = response.results[0];
-                if (result && result.graphic && popLayerView) {
-                    if (currentHighlight) {
-                        currentHighlight.remove();
-                    }
-                    currentHighlight = popLayerView.highlight([result.graphic.attributes.OBJECTID]);
-                    if (result.graphic.attributes[`pop${currentYear}`]) {
-                        document.getElementById("info").innerHTML = "Selected bar has a population of: " + result.graphic.attributes[`pop${currentYear}`].toLocaleString();
-                    }
-                } else {
-                    if (currentHighlight) {
-                        currentHighlight.remove();
-                        document.getElementById("info").innerHTML = null;
-                    }
-                }
-            })
-            .catch(console.error);
-    });
-
-    const legend = new Legend({
-        view: view,
-        container: "legend"
-    });
-
-    const portrait = window.matchMedia("(max-width: 600px)");
-    portrait.addListener(setPadding);
-
-    function setPadding() {
-        if (portrait.matches) {
-            view.padding = {
-                bottom: 200
-            };
-        } else {
-            view.padding = {
-                left: 250
-            };
-        }
-    }
-    setPadding();
-});
-
-
-Splitting();
-
-
-
-
-$(function() {
-    $('.pop-up').hide();
-    $('.pop-up').fadeIn(1000);
-    
-        $('.close-button').click(function (e) { 
-  
-        $('.pop-up').fadeOut(700);
-        $('#overlay').removeClass('blur-in');
-        $('#overlay').addClass('blur-out');
-        e.stopPropagation();
-          
-      });
-   });
-
-
-
-
-
-
-const modal = document.querySelector(".modal");
-const trigger = document.querySelector(".trigger");
-const closeButton = document.querySelector(".close-button");
-
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-}
-
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
-
-
-
-
-
-
-$(document).ready(function(){
-    $('#onload-modal').modal({
-        fadeDuration: 250
-      });
-    });
-
-
-
-
-$(document).ready(function() {
-        $(".popup").show();
-        $(".close").on('click', function() {
-          $(".overlay").hide();
-          $(".modal").hide();
-          $(".popup").hide();
-        });
-});
-
-
-function closePop(){
-        document.getElementById("modal");
-        modal.style.display="none";
-}
-
-$(function(){
-    var overlay = $('<div id="overlay"></div>');
-    overlay.show();
-    overlay.appendTo(document.body);
-    $('.modal').show();
-    $('.close').click(function(){
-    $('.modal').hide();
-    overlay.appendTo(document.body).remove();
-    return false;
-    });
-    
-    
-     
-    
-    $('.x').click(function(){
-    $('.popup').hide();
-    overlay.appendTo(document.body).remove();
-    return false;
-    });
-});
-
-
-
-document.getElementsByClassName("moadl")[0].classList.add("active");
-
-   
-document.getElementById("#close").addEventListener("click",function(){
-    document.getElementsByClassName(".overlay")[0].classList.add("active");
-});
-
-
-$(function(){
-    var overlay = $('<div id="overlay"></div>');
-    overlay.show();
-    overlay.appendTo(document.body);
-    $('.onload-modal').show();
-    $('.close').click(function(){
-    $('.onload-modal').hide();
-    overlay.appendTo(document.body).remove();
-    return false;
-    });
-    
-    
-     
-    
-    $('.x').click(function(){
-    $('.popup').hide();
-    overlay.appendTo(document.body).remove();
-    return false;
-    });
-});
-
-window.onload=function()
-{
-    var hidediv=document.getElementById('popup');
-    document.onclick=function(div)
-    {
-        if(div.target.id !=='popup')
-        {
-            hidediv.style.display='none';
-        }
-    };
-};
-
-
-document.querySelector('.close').addEventListener("click", function() {
-	document.querySelector('.modal').style.display = "none";
-});
-
-
-$(function(){
-    var overlay = $('<div id="overlay"></div>');
-    overlay.show();
-    overlay.appendTo(document.body);
-    $('.popup-onload').show();
-    $('.close').click(function(){
-    $('.popup-onload').hide();
-    overlay.appendTo(document.body).remove();
-    return false;
-    });
-    
-    
-     
-    
-    $('.x').click(function(){
-    $('.popup').hide();
-    overlay.appendTo(document.body).remove();
-    return false;
-    });
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-//front page animation//
-
 const tools = {
     drawPath(ctx, fn) {
         ctx.save();
@@ -1392,3 +975,192 @@ class App {
 window.addEventListener('load', () => {
     window.app = new App()
 });
+
+
+
+///////////////////Cards
+
+// listing vars here so they're in the global scope
+var cards, nCards, cover, openContent, openContentText, pageIsOpen = false,
+    openContentImage, closeContent, windowWidth, windowHeight, currentCard;
+
+// initiate the process
+init();
+
+function init() {
+  resize();
+  selectElements();
+  attachListeners();
+}
+
+// select all the elements in the DOM that are going to be used
+function selectElements() {
+  cards = document.getElementsByClassName('card'),
+  nCards = cards.length,
+  cover = document.getElementById('cover'),
+  openContent = document.getElementById('open-content'),
+  openContentText = document.getElementById('open-content-text'),
+  openContentImage = document.getElementById('open-content-image')
+  closeContent = document.getElementById('close-content');
+}
+
+/* Attaching three event listeners here:
+  - a click event listener for each card
+  - a click event listener to the close button
+  - a resize event listener on the window
+*/
+function attachListeners() {
+  for (var i = 0; i < nCards; i++) {
+    attachListenerToCard(i);
+  }
+  closeContent.addEventListener('click', onCloseClick);
+  window.addEventListener('resize', resize);
+}
+
+function attachListenerToCard(i) {
+  cards[i].addEventListener('click', function(e) {
+    var card = getCardElement(e.target);
+    onCardClick(card, i);
+  })
+}
+
+/* When a card is clicked */
+function onCardClick(card, i) {
+  // set the current card
+  currentCard = card;
+  // add the 'clicked' class to the card, so it animates out
+  currentCard.className += ' clicked';
+  // animate the card 'cover' after a 500ms delay
+  setTimeout(function() {animateCoverUp(currentCard)}, 500);
+  // animate out the other cards
+  animateOtherCards(currentCard, true);
+  // add the open class to the page content
+  openContent.className += ' open';
+}
+
+/*
+* This effect is created by taking a separate 'cover' div, placing
+* it in the same position as the clicked card, and animating it to
+* become the background of the opened 'page'.
+* It looks like the card itself is animating in to the background,
+* but doing it this way is more performant (because the cover div is
+* absolutely positioned and has no children), and there's just less
+* having to deal with z-index and other elements in the card
+*/
+function animateCoverUp(card) {
+  // get the position of the clicked card
+  var cardPosition = card.getBoundingClientRect();
+  // get the style of the clicked card
+  var cardStyle = getComputedStyle(card);
+  setCoverPosition(cardPosition);
+  setCoverColor(cardStyle);
+  scaleCoverToFillWindow(cardPosition);
+  // update the content of the opened page
+  openContentText.innerHTML = '<h1>'+card.children[2].textContent+'</h1>'+paragraphText;
+  openContentImage.src = card.children[1].src;
+  setTimeout(function() {
+    // update the scroll position to 0 (so it is at the top of the 'opened' page)
+    window.scroll(0, 0);
+    // set page to open
+    pageIsOpen = true;
+  }, 300);
+}
+
+function animateCoverBack(card) {
+  var cardPosition = card.getBoundingClientRect();
+  // the original card may be in a different position, because of scrolling, so the cover position needs to be reset before scaling back down
+  setCoverPosition(cardPosition);
+  scaleCoverToFillWindow(cardPosition);
+  // animate scale back to the card size and position
+  cover.style.transform = 'scaleX('+1+') scaleY('+1+') translate3d('+(0)+'px, '+(0)+'px, 0px)';
+  setTimeout(function() {
+    // set content back to empty
+    openContentText.innerHTML = '';
+    openContentImage.src = '';
+    // style the cover to 0x0 so it is hidden
+    cover.style.width = '0px';
+    cover.style.height = '0px';
+    pageIsOpen = false;
+    // remove the clicked class so the card animates back in
+    currentCard.className = currentCard.className.replace(' clicked', '');
+  }, 301);
+}
+
+function setCoverPosition(cardPosition) {
+  // style the cover so it is in exactly the same position as the card
+  cover.style.left = cardPosition.left + 'px';
+  cover.style.top = cardPosition.top + 'px';
+  cover.style.width = cardPosition.width + 'px';
+  cover.style.height = cardPosition.height + 'px';
+}
+
+function setCoverColor(cardStyle) {
+  // style the cover to be the same color as the card
+  cover.style.backgroundColor = cardStyle.backgroundColor;
+}
+
+function scaleCoverToFillWindow(cardPosition) {
+  // calculate the scale and position for the card to fill the page,
+  var scaleX = windowWidth / cardPosition.width;
+  var scaleY = windowHeight / cardPosition.height;
+  var offsetX = (windowWidth / 2 - cardPosition.width / 2 - cardPosition.left) / scaleX;
+  var offsetY = (windowHeight / 2 - cardPosition.height / 2 - cardPosition.top) / scaleY;
+  // set the transform on the cover - it will animate because of the transition set on it in the CSS
+  cover.style.transform = 'scaleX('+scaleX+') scaleY('+scaleY+') translate3d('+(offsetX)+'px, '+(offsetY)+'px, 0px)';
+}
+
+/* When the close is clicked */
+function onCloseClick() {
+  // remove the open class so the page content animates out
+  openContent.className = openContent.className.replace(' open', '');
+  // animate the cover back to the original position card and size
+  animateCoverBack(currentCard);
+  // animate in other cards
+  animateOtherCards(currentCard, false);
+}
+
+function animateOtherCards(card, out) {
+  var delay = 100;
+  for (var i = 0; i < nCards; i++) {
+    // animate cards on a stagger, 1 each 100ms
+    if (cards[i] === card) continue;
+    if (out) animateOutCard(cards[i], delay);
+    else animateInCard(cards[i], delay);
+    delay += 100;
+  }
+}
+
+// animations on individual cards (by adding/removing card names)
+function animateOutCard(card, delay) {
+  setTimeout(function() {
+    card.className += ' out';
+   }, delay);
+}
+
+function animateInCard(card, delay) {
+  setTimeout(function() {
+    card.className = card.className.replace(' out', '');
+  }, delay);
+}
+
+// this function searches up the DOM tree until it reaches the card element that has been clicked
+function getCardElement(el) {
+  if (el.className.indexOf('card ') > -1) return el;
+  else return getCardElement(el.parentElement);
+}
+
+// resize function - records the window width and height
+function resize() {
+  if (pageIsOpen) {
+    // update position of cover
+    var cardPosition = currentCard.getBoundingClientRect();
+    setCoverPosition(cardPosition);
+    scaleCoverToFillWindow(cardPosition);
+  }
+  windowWidth = window.innerWidth;
+  windowHeight = window.innerHeight;
+}
+
+var paragraphText = '<p>Somebody once told me the world is gonna roll me. I ain\'t the sharpest tool in the shed. She was looking kind of dumb with her finger and her thumb in the shape of an "L" on her forehead. Well the years start coming and they don\'t stop coming. Fed to the rules and I hit the ground running. Didn\'t make sense not to live for fun. Your brain gets smart but your head gets dumb. So much to do, so much to see. So what\'s wrong with taking the back streets? You\'ll never know if you don\'t go. You\'ll never shine if you don\'t glow.</p><p>Hey now, you\'re an all-star, get your game on, go play. Hey now, you\'re a rock star, get the show on, get paid. And all that glitters is gold. Only shooting stars break the mold.</p><p>It\'s a cool place and they say it gets colder. You\'re bundled up now, wait till you get older. But the meteor men beg to differ. Judging by the hole in the satellite picture. The ice we skate is getting pretty thin. The water\'s getting warm so you might as well swim. My world\'s on fire, how about yours? That\'s the way I like it and I never get bored.</p>';
+
+

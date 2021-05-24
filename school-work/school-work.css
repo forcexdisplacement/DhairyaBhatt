@@ -1,0 +1,371 @@
+* {
+    box-sizing: border-box;
+
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+    -webkit-appearance: none;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #181818;
+    font-family:  Montserrat, Helvetica Neue,PingFang SC,Helvetica,Arial,Hiragino Sans GB,Microsoft Yahei,\\5FAE\8F6F\96C5\9ED1,STHeiti,\\534E\6587\7EC6\9ED1,sans-serif;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    font-weight: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 0;
+    background: none;
+    border: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.plate {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    color: white;
+    letter-spacing: 4px;
+    font-size: 0.6em;
+    line-height: 2.5;
+}
+
+
+.social {
+    padding-top: 1rem;
+}
+.social svg {
+    height: 1.25rem;
+    margin: 0 0.5rem;
+    fill: rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+}
+.social svg:hover {
+    fill: white;
+}
+.social a {
+    vertical-align: middle;
+    display: inline-block;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.7s ease 0.15s;
+}
+.social__twitter {
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+}
+.social__codepen {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+}
+.social.active {
+    opacity: 1;
+}
+.social.active a {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: none;
+    transform: none;
+}
+
+.mouse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    letter-spacing: 6px;
+    font-size: 0.45em;
+    line-height: 2.5;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+    opacity: 0;
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+}
+.mouse.active {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+}
+
+.text-animation {
+    opacity: 0;
+}
+.text-animation.active {
+    opacity: 1;
+}
+.text-animation .letter {
+    opacity: 0;
+    transition: color 0.5s ease, opacity 0.3s ease;
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    color: white;
+}
+.text-animation .letter.active {
+    color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    -webkit-animation: color 5s ease infinite 3s;
+    animation: color 5s ease infinite 3s;
+}
+
+@-webkit-keyframes color {
+    0% {
+        color: white;
+    }
+    20% {
+        color: rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+@keyframes color {
+    0% {
+        color: white;
+    }
+    20% {
+        color: rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+
+
+/*-------------------------Cards-------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap');
+@import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+}
+
+.wrapper{
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    display: inline-block;
+  width: 100%;
+  height: 109vh;
+}
+
+h3{
+    color: white;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 50px;
+}
+.card-item{
+  width: 380px;
+  margin: 25px;
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  padding-bottom: -50px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px -16px rgba(36, 64, 255, 0.25);
+  transition: ease 0.4s;
+}
+.card-item .color-back-img{
+    width: 330px;
+    height: 190px;
+    position: absolute;
+    margin: 25px;
+    border-radius: 15px;
+    z-index: 0;
+}
+.card-item  .img-card{
+    position: absolute;
+    width: 350px;
+    left: 0;
+    right: 0;
+    margin: -60px auto 0;
+}
+.card-item  .title{
+    padding: 240px 35px 15px 35px;
+    font-weight: 500;
+    color: #707070;
+    font-size: 24px;
+}
+.card-item .text-body{
+    font-weight: 300;
+    color: #707070;
+    font-size: 13px;
+    line-height: 22px;
+    padding: 0 35px 30px;
+}
+
+
+.card-item  .btn-card{
+      width: 150px;
+      height: 45px;
+      text-align: center;
+      padding: 11px;
+      font-size: 19px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+    .card-item   .icons{
+      padding-bottom: 15px;
+            width: 200px;
+      justify-content: space-evenly;
+    }
+    .card-item .bx{
+        color: #a9a9a9
+      }
+
+  
+@media (max-width: 849px){
+    .wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+  .wrapper{
+    width: 100%;
+    height: 100%;
+      }
+  .card-item{
+      margin: 65px 0 30px
+  }
+}
+
+
+@media (max-width: 480px){
+    .wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+    
+  .card-item{
+    width: 250px;
+    min-height: 240px;
+    border-radius: 14px;
+  }
+    .color-back-img{
+      width: 220px;
+      height: 115px;
+      margin: 15px;
+      border-radius: 10px
+    }
+    .img-card{
+      width: 240px;
+    }
+    .title{
+      padding: 140px 20px 15px 20px;
+      font-size: 15px
+    }
+    .text-body{
+      font-size: 12px;
+      line-height: 17px;
+      padding: 0 20px 15px
+    }
+    .card-footer .btn-card{
+        width: 100px;
+        height: 36px;
+        padding: 9px;
+        font-size: 14px;
+        border-top-right-radius: 14px;
+        border-bottom-left-radius: 14px;
+    }
+        .card-footer .icons{
+        padding: 12px 0;
+        width: 130px
+        }
+        
+
+        
+@keyframes fadeInUp{
+  from{
+    transform: translate3d(0, 80px, 0)
+  }
+
+  to{
+    transform: translate3d(0, 0, 0);
+    opacity: 1
+  }
+}
+
+.animated{
+  animation-duration: 0.6s;
+  animation-delay: 700ms;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.6s;
+  -webkit-animation-delay: 700ms;
+  -webkit-animation-fill-mode: both;
+}
+
+.fadeInUp{
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}

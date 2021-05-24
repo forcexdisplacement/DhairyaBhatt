@@ -118,7 +118,9 @@ html{
 -----------------------------
 -------------------------------------*/
 
-
+.intro--options{
+    z-index: 9999999999999999999999999999999999999999999999999;
+}
 
 /*----------------------------------------------------
 ----------------------------
@@ -306,7 +308,7 @@ p:nth-child(n+2){
 
 /*--------------------------------------------*/
 
-/*Gallery backgroung animation*/
+/*Gallery background animation*/
 
 .container123 {
     position: absolute;
@@ -370,19 +372,34 @@ p:nth-child(n+2){
 }
 
 .music, .gallery, .school{
-    display: inline-block;
-    text-decoration: none;
-    color: #bbb2e9;
-    font-size: 30px;
-    border: 100px;
-    border-color: chartreuse;
-}
-.school{
     position: relative;
-    top: 50%;
+    top: 30%;
+    color: #c4c4c4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.8em;
+}
+
+.music:hover,.gallery:hover, .school:hover{
+    animation: lol forwards 0.9s;
+}
+@keyframes lol{
+    0%{
+        color: white;
+    }
+    50%{
+        color: violet;
+    }
+    100%{
+        color: #ea4c89;
+    }
 }
 
 /*Gallery backgroung animation*/
