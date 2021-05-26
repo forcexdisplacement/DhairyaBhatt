@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>typetura</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <meta name="disabled-adaptations" content="watch">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#359f9d">
+    <meta name="apple-mobile-web-app-title" content="typetura">
+    <meta name="application-name" content="typetura">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#359f9d">
+    <link href="assets/css/english.css" rel="stylesheet">
+    <script src="assets/js/english.js"></script>
+  </head>
+  <body>
+    <svg id="filters" width="0" height="0"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+      <rect id="high2" width="100%" height="100%" fill="url(#high1)"></rect>
+      <rect id="low2" width="100%" height="100%" fill="url(#low1)"></rect>
+      <filter id="fluid">
+        <feTurbulence type="fractalNoise" baseFrequency=".08 .04" numOctaves="3" result="noise1"></feTurbulence>
+        <feColorMatrix in="noise1" type="hueRotate" result="noise2">
+          <animate attributeName="values" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+        </feColorMatrix>
+        <feDisplacementMap xChannelSelector="R" yChannelSelector="B" scale="16" in="SourceGraphic" in2="noise2" />
+      </filter>
+    </svg>
+    
+    <nav id="nav">
+      <a href="javascript:navtoggle()" class="navtoggle">
+        <span class="navtoggle_label">Toggle nav</span>
+        <div class="partbar active"></div>
+        <div class="partbar"></div>
+        <div class="partbar"></div>
+        <div class="partbar"></div>
+        <div class="partbar"></div>
+      </a>
+      <div class="navparts">
+        <a href="#part1" class="current">
+          <span class="part">Part 1</span>
+          <span class="title">Defination</span>
+        </a>
+        <a href="#part2">
+          <span class="part">Part 2</span>
+          <span class="title">Simple Explanation</span>
+        </a>
+        <a href="#part3">
+          <span class="part">Part 3</span>
+          <span class="title">Search Engine Bias</span>
+        </a>
+        <a href="#part4" >
+          <span class="part">Part 4</span>
+          <span class="title">Ways to prevent being affected by confirmation bias</span>
+        </a>
+        <a href="#part5">
+          <span class="part">Part 5</span>
+          <span class="title">Conclusion</span>
+        </a>
+      </div>
+    </nav>
+
+    <article>
+      <div class="bkg" style="position:relative;top -10%;"></div>
+      <div class="width-value" id="widthValue"></div>
+
+      <div class="meta momentumcss">
+        <div class="logo">
+            <img style="width: 130px; height: 100px; position:relative; top:auto; left: -20%;" src="assets/img/logo transparent mix.png" alt="Dhairya Bhatt, logo, DhairyaBhatt, Dhairya-Bhatt, dhairya Bhatt, dhairya-bhatt">
+        </div><span class="date">May 06, 2021</span>
+      </div>    
+
+      <h1 class="hed momentumcss">Confirmation Bias</h1>
+      <div class="byline">by <a href="https://DhairyaBhatt.com">Dhairya Bhatt.</a></div>
+      <section class="lede">
+        <p>
+          The article is part of my summer vacation homework provided by my school for subject "English" Hope you enjoy.
+        </p>
+      </section>
+      <section class="article">
+          <div id="part1">
+        <h1>Defination</h1>
+        <p>
+        <a href="https://en.wikipedia.org/wiki/Confirmation_bias">Confirmation bias</a> is the tendency to search for, interpret, favor, and recall information in a way that confirms or supports one's prior beliefs or values. <a href="https://en.wikipedia.org/wiki/Confirmation_bias">Source by wikipedia</a>
+        </p>
+        <div class="detail ellipsis momentumcss"></div>
+    </div>
+    <div id="part2">
+        <figure>
+          <h1><span class="variable-a" style="pointer-events: none;">Simple Explanation</span></h1>
+
+        </figure>
+        <p>
+            The confirmation bias is the idea that we see what we want to see.  People tend to prefer information that confirms what they already know—whether or not the information is true. Having this bias is not always a terrible thing; it allows us to collect information that assists us in building a case for our own reasoning, thus developing self-efficacy.  However, more often than not, this bias gets us into trouble because it can distort our ability to make informed decisions. 
+        </p>
+        <p>
+            Confirmation bias presents a problem in how people chose political candidates. People are disinclined to listen to information, no matter how valid the information, that doesn’t not support their own political views. 
+        </p>
+        </div>
+
+    <div id="part3">
+        <h1><span class="variable-a" style="pointer-events: none;">Search Engine Bias</span></h1>
+        <div class="detail spot momentumcss"></div>
+        <p>
+            Search engine algorithms are designed to give us information based on keywords related to our search. This is generally very useful to user. However, if a person is searching for topics that are anti-social or even hateful, search engine will provide the information that supports his bias. And this is a major problem because he will never receive information that against his bias.
+        </p>
+        <p>
+            And a current example of this is people spreading false information about the dangers of the corona virus vacancies. 
+        </p>
+    </div>
+
+        <div id="part4">
+        <h1><span class="variable-a" style="pointer-events: none;">Ways to prevent being affected by confirmation bias</span></h1>
+    
+        <p>
+            <ul><strong>•</strong>	Commit to becoming actively curious. Ask questions. Don’t take sources at their word. Do your own fact checking.</ul>
+            <ul><strong>•</strong>	Be willing to consider other points of view.  Open yourself up to learning why others believe what they believe.  It may not ultimately change your opinion about an issue, but the learning process can only help serve to depending on your understanding.</ul>
+            <ul><strong>•</strong>	Examine your own beliefs.  It takes a significant amount of courage to investigate your own fundamental values when there is a genuine risk that you could discover that that you are wrong.  Having courage is not always easy, but it’s important in the development of your character.  If your fear is truly that intense about learning other viewpoints, it may be time to evaluate why you possess such an aversion to new ideas.</ul>
+            <ul><strong>•</strong>•	Be cautious of statements including definitives like “always” and “never.”  Know that in mind, there are typically many beautiful shades of gray, and we all have the capacity for significant change.</ul>
+        </p>
+    </div>
+    <div id="part5">
+        <h1><span class="variable-a" style="pointer-events: none;">Conclusion</span></h1>
+        <p>
+            In Conclusion, we are all inclined to have our own biases, being aware of this will make us more open minded and will protect us from developing false beliefs, particularly when using the world wide web (w.w.w). 
+        </p>
+        <p>
+
+            FACT CHECK!
+        </p>
+    </div>
+      </section>
+    </article>
+    <footer>
+      <a class="footer-typetura" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" href="https://dhairyabhatt.com">
+        <img src="assets/img/Logo transprarent black.png" alt="">
+        DhairyaBhatt.com
+      </a>
+      <a href="school-work.html" class="footer-nextpart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <polyline class="a6679ea1-9a17-403e-b2f3-7212a8437001" points="6 2 14 10 6 18"/>
+        </svg>
+        Other work
+        <h1>Look at my work on different subjects</h1>
+      </a>
+    </footer>
+  </body>
+</html>
