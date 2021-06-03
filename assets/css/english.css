@@ -21,6 +21,7 @@ It’s a good font that is totally worth every penny.
 }
 
 body {
+  overflow-x: hidden;
   --color: #bbb2e9;
   --color-2: #000000;
   --text: rgb(23, 24, 24);
