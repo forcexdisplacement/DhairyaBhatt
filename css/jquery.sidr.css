@@ -1,0 +1,11 @@
+.sidr{display:none;position:absolute;position:fixed;top:0;height:100%;z-index:999999;width:200px;overflow-x:none;overflow-y:auto;text-transform: uppercase;font-family: font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;background:#1e1e1e;color:#fff;-webkit-box-shadow:inset -25px 0px 25px -25px #000;-moz-box-shadow:inset -25px 0px 25px -25px #000;inset -25px 0px 25px -25px #000;}
+.sidr .sidr-inner{padding:0 0 15px}
+.sidr.right{left:auto;right:-200px}
+.sidr.left{left:-200px;right:auto}
+.sidr ul{display:block;margin:0 0 15px;padding:0;}
+.sidr ul li{display:block;margin:0;line-height:45px;border-bottom: 1px solid #262626;}
+.sidr ul li a,.sidr ul li span{padding:0 15px;display:block;text-decoration:none;color:#fff;font-weight: 700;}
+.mobile-menu-header{background-color: #005E60;height:70px;border-bottom:1px solid #f5f5f5;}
+.mobile-menu-header p{color: #fff;font-size:15px;font-weight: 700;letter-spacing: 1px;padding-top: 10px;padding-left:15px;}
+.sidr ul li.current, .sidr ul li:hover {background-color: #009CA0;}
+.sidr .sidr-class-home-logo { text-align: center; display: block; margin-bottom: 5px;}

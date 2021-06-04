@@ -1,0 +1,168 @@
+#flippers {
+	margin: 30px auto;
+	text-align: center;
+	font-family: 'Tungsten A', 'Tungsten B';
+}
+
+span.flip-selector {
+	margin-top: 5px;
+	font-size: 24px;
+	line-height: 1.3em;
+	color: #dfe1e5;
+	font-family: 'Tungsten A', 'Tungsten B';
+	font-weight: 300;
+	font-style: normal;
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+#flipper-region-selector, #flipper-location-selector {
+	margin-left: 10px;
+	height: 50px;
+	width: 300px;
+}
+
+#flipper-selectors {
+	text-align: center;
+}
+
+#region-container, #location-container {
+	display: inline-block;
+	width: 387px;
+}
+
+#region-container {
+	text-align: center;
+}
+
+#location-container {
+	text-align: center;
+}
+
+#fertility-counter {
+	margin-right: 20px;
+}
+
+#mortality-counter {
+	margin: 0 20px;
+}
+
+#life-counter {
+	margin-left: 20px;
+}
+
+div.flipper-header {
+	border-bottom: solid 4px #444444;
+	padding-bottom: 4px;
+}
+
+div.flipper-header h4 {
+	font-size: 32px;
+	color: #dfe1e5;
+	margin-top: 20px;
+	margin: 10px 0 0 0;
+	
+	font-weight: 300;
+	font-style: normal;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0;
+}
+
+div.flipper-header span {
+	color: #dfe1e5;
+	font-size: 19px;
+	line-height: 1em;
+	letter-spacing: 1px;
+}
+
+div.flipper {
+	display: inline-block;
+	width: 230px;
+	height: 270px;
+	position: relative;
+}
+
+div.flip1970, div.flip2014 {
+	height: 140px;
+	margin-top: 10px;
+	position: absolute;
+	width: 50%;
+	opacity: 0.8;
+}
+
+div.flip1970 {
+	left: 0;
+}
+
+div.flip2014 {
+	position: absolute;
+	right: 0;
+}
+
+div.flip2014 .front, div.flip2014 .back {
+	right: 0;
+}
+
+span.selector-title {
+	margin-right: 10px;
+}
+
+#flippers div.numbers {
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Tungsten Narrow A', 'Tungsten Narrow B';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 90px;
+	line-height: 1em;
+}
+
+#flippers div.numbers img {
+	display: inline-block;
+}
+
+div.flipper > div {
+
+}
+
+#flippers div.front, #flippers div.back {
+	min-width: 105px;
+	height: 105px;
+	border-radius: 3px;
+	color: #FFFFFF;
+	padding: 8px;
+	margin: 0 auto;
+}
+
+#flippers div.front {
+	background: #444444;
+	position: absolute;
+	top: 0;
+}
+
+#flippers div.back {
+	background: #444444;
+	position: absolute;
+	top: 0;
+	display: none;
+}
+
+#flippers div.flipper-date-box {
+	font-size: 24px;
+	position: absolute;
+	text-align: center;
+	bottom: 0;
+	background: #DDD105;
+	color: #222222;
+	width: 105px;
+	height: 27px;
+	font-family: 'Tungsten A', 'Tungsten B';
+	font-weight: 500;
+	font-style: normal;
+	text-transform: uppercase;
+}
+
+div.flip2014 div.flipper-date-box{
+	right: 0;
+}

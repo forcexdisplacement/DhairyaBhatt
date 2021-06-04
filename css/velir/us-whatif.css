@@ -1,0 +1,264 @@
+#whatif .viz2-wrapper {
+    position: relative;
+    font-family: 'Tungsten A', 'Tungsten B';
+    color: #E0E2E6;
+}
+
+#whatif .viz2-wrapper .viz {
+    position: relative;
+    width: 760px;
+    margin: 0 auto;
+}
+
+#whatif .viz2-wrapper .axis path,
+#whatif .viz2-wrapper .axis line {
+  fill: none;
+  stroke: #E0E2E6;
+  shape-rendering: crispEdges;
+  stroke-width: 2px;
+}
+
+#whatif .viz2-wrapper .line {
+  fill: none;
+  stroke: #E0E2E6;
+  stroke-width: 2.5px;
+}
+
+#whatif .viz2-wrapper .tick line{
+    display: none;
+}
+
+#whatif .viz2-wrapper text {
+    fill: #E0E2E6;
+    font-size: 18px;
+}
+
+#whatif .viz2-wrapper rect.bar {
+    stroke-width: 0;
+}
+
+#whatif .viz2-wrapper .steps-header-wrapper {
+    background: rgba(50, 50, 51, 0.8);
+}
+
+#whatif .viz2-wrapper .steps-header {
+    overflow: hidden;
+    width: 760px;
+    margin: 0 auto;
+}
+
+#whatif .viz2-wrapper .step-header {
+    float: left;
+    width: 253px;
+    text-align: center;
+    padding: 5px 0 10px;
+}
+
+#whatif .viz2-wrapper .step-header h4 {
+   font-family: 'Tungsten Narrow A', 'Tungsten Narrow B';
+   font-size: 40px;
+   text-transform: uppercase;
+}
+
+#whatif .viz2-wrapper .step-header p {
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-size: 12px;
+    line-height: 12px;   
+    text-transform: uppercase;
+    color: #8E8E91;
+    margin: 0;
+}
+
+#whatif .viz2-wrapper .steps {
+    overflow: hidden;
+    min-height: 300px;
+    width: 760px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+#whatif .viz2-wrapper .step {
+    width: 253px;
+    padding: 10px 10px;
+    float: left;
+}
+
+#whatif .viz2-wrapper .step2, .step3 {
+    display: none;
+}
+
+#whatif .viz2-wrapper .step .button {
+    position: relative;
+    border: 3px solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: 500;
+    background: rgba(50, 50, 51, 0.5);
+}
+
+#whatif .viz2-wrapper .step .button.dark {
+    background: rgba(224, 226, 230, 0.7);
+}
+
+#whatif .viz2-wrapper .step .button span.title {
+    font-size: 24px;
+    line-height: 24px;
+    display: block;
+}
+
+#whatif .viz2-wrapper .step .button span.subtitle {
+    font-size: 14px;
+    line-height: 14px;
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
+    display: block;
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+#whatif .viz2-wrapper .step p, #whatif p>strong{
+    font-size: 14px;
+    line-height: 16px;
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
+    margin-top: 14px;
+    color: inherit;
+}
+
+#whatif .viz2-wrapper .step .button p {
+    text-transform: none;
+    margin-bottom: 0;
+}
+
+#whatif .viz2-wrapper .step .button img {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+}
+
+/* Step 1 Styles */
+#whatif .viz2-wrapper .step1 .button {
+    border-color: #DF8E07;
+    color: #DF8E07;
+}
+
+#whatif .viz2-wrapper .step1 .button.active{
+    background-color: #DF8E07;
+    color: #323233;
+}
+
+/* Step 2 Styles */
+#whatif .viz2-wrapper .step2 .button[data-rate="constant"] {
+    border-color: #00DAA1;
+    color: #00DAA1;
+}
+
+#whatif .viz2-wrapper .step2 .button.active[data-rate="constant"] {
+    background-color: #00DAA1;
+    color: #323233;
+}
+
+#whatif .viz2-wrapper .step2 .button[data-rate="noInequality"] {
+    border-color: #B3C60E;
+    color: #B3C60E;
+}
+
+#whatif .viz2-wrapper .step2 .button.active[data-rate="noInequality"] {
+    background-color: #B3C60E;
+    color: #323233;
+}
+
+/* Step 3 Styles */
+#whatif .viz2-wrapper .step3 .rate-group {
+    height: 85px;
+    padding-top: 10px;
+}
+
+#whatif .viz2-wrapper .step3 .rate-group .fadable {
+    display: none;
+}
+
+#whatif .viz2-wrapper .step3 p{
+    margin: 0 10px 0 0;
+}
+
+#whatif .viz2-wrapper .step3 h4 {
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#whatif .viz2-wrapper .step3 h4.rate-constant {
+    color: #00DAA1;
+}
+
+#whatif .viz2-wrapper .step3 h4.rate-noInequality {
+    color: #B3C60E;
+}
+
+#whatif .viz2-wrapper .step3 .button {
+    display: inline-block;
+    padding: 3px 20px;
+    margin-right: 20px;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="constant-low"] {
+    border-color: #00d2d7;
+    color: #00d2d7;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="constant-low"].active {
+    background-color: #00d2d7;
+    color: #323233;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="constant-high"] {
+    border-color: #94e3e7;
+    color: #94e3e7;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="constant-high"].active {
+    background-color: #94e3e7;
+    color: #323233;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="noInequality-low"] {
+    border-color: #c3a103;
+    color: #c3a103;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="noInequality-low"].active {
+    background-color: #c3a103;
+    color: #323233;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="noInequality-high"] {
+    border-color: #f9ffb1;
+    color: #f9ffb1;
+}
+
+#whatif .viz2-wrapper .step3 .button[data-immigration="noInequality-high"].active {
+    background-color: #f9ffb1;
+    color: #323233;
+}
+
+#whatif .viz2-wrapper circle.hover-dot {
+    fill: #E0E2E6;
+    'stroke-width': 0;
+}
+
+#whatif .viz2-wrapper text.hover-text {
+    fill: #E0E2E6;
+    stroke-width: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#whatif .viz2-wrapper line.hover-line {
+    stroke: #E0E2E6;
+    stroke-width: 1;
+}

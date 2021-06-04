@@ -1,0 +1,454 @@
+#region-dropdown {
+  display: none;
+}
+
+.viz1-wrapper {
+  min-width: 760px;
+  position: relative;
+  margin: 0 auto;
+  color: #E0E2E6;
+  text-align: left;
+}
+
+.viz1-wrapper svg {
+  width: 100%;
+}
+
+.viz1-wrapper circle,
+.viz1-wrapper path {
+  cursor: pointer;
+}
+
+.viz1-wrapper circle {
+  fill: none;
+  pointer-events: all;
+}
+
+.viz1-wrapper text {
+  color: #E0E2E6;
+  fill: #E0E2E6;
+  stroke-width: 0px;
+  font-family: 'Tungsten A', 'Tungsten B';
+  font-size: 18px;
+}
+
+.viz1-wrapper svg .region-labels circle, 
+.viz1-wrapper svg .region-labels line {
+  pointer-events: none;
+}
+
+
+.viz1-wrapper h1.viz1title {
+  font-family: 'Tungsten Narrow A', 'Tungsten Narrow B';
+  font-weight: 500;
+  font-size: 50px;
+  color: #89898B;
+}
+
+.viz1-wrapper #viz1-sort {
+  font-family: 'Tungsten A', 'Tungsten B';
+  font-size: 20px;
+  font-weight: 400;
+  color: #8E8E91;
+}
+
+.viz1-wrapper #viz1-sort a{
+  text-decoration: none;
+  text-transform: uppercase;  
+  margin: 0 4px;
+  color: inherit;
+  font-weight: 500;
+  color: #E0E2E6;
+}
+
+.viz1-wrapper #viz1-sort a:hover{
+  color: #B3C60E;
+}
+
+.viz1-wrapper #viz1-sort a.active{
+  cursor: default;
+  color: #B3C60E;
+}
+
+.viz1-wrapper .viz1-instructions {
+  display: block;
+  font-style: italic;
+}
+
+.viz1-wrapper span.viz1-back {
+  font-family: 'Tungsten Narrow A', 'Tungsten Narrow B';
+  font-weight: 500;
+  font-size: 24px;    
+  color: #b3c60e;     
+  cursor: pointer;
+  position: absolute;
+  z-index: 1000;
+  display: none;
+}
+
+.viz1-wrapper span.viz1-back img{
+  margin-right: 5px;
+  margin-top: -3px;
+}
+
+.viz1-wrapper .partitions-wrapper {
+  clear: both;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.viz1-wrapper .partition-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}
+
+#viz2014{
+  margin-left: -10px;
+}
+
+.viz1-wrapper .center-text {
+  position: absolute;
+  width: 99px;
+  height: 99px;
+  left: calc(50% - 48px);
+  top: calc(50% - 28px);
+  text-align: center;
+  font-family: 'Tungsten Narrow A', 'Tungsten Narrow B';
+  pointer-events: none;
+}
+
+.viz1-wrapper .center-text span {
+  display: block;
+  pointer-events: none;
+}
+
+.viz1-wrapper .center-text span.data-year {
+  width: 45px;
+  margin: -10px auto 0;
+  font-size: 25px;
+  line-height: 25px;
+  border-bottom: 3px solid #E0E2E6;
+}
+
+.viz1-wrapper .center-text span.data-value {
+  font-size: 65px;
+  line-height: 65px;
+}
+
+.viz1-wrapper .center-text span.data-suffix {
+  font-size: 25px;
+  line-height: 25px;
+}
+
+
+@media only screen and (min-width: 1200px){
+  .viz1-wrapper svg {
+      height: 700px;
+    }
+    .viz1-wrapper .center-text {
+      width: 160px;
+      height: 160px;
+      left: calc(50% - 80px);
+      top: calc(50% - 42px);
+    }
+    .viz1-wrapper .center-text span.data-year {
+      width: 60px;
+      margin: -10px auto 0;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    .viz1-wrapper .center-text span.data-value {
+      font-size: 90px;
+      line-height: 90px;
+    }
+
+    .viz1-wrapper .center-text span.data-suffix {
+      font-size: 40px;
+      line-height: 40px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px){
+  .viz1-wrapper svg {
+      height: 600px;
+    }  
+    .viz1-wrapper .center-text {
+      width: 130px;
+      height: 130px;
+      left: calc(50% - 63px);
+      top: calc(50% - 36px);
+    }
+    .viz1-wrapper .center-text span.data-year {
+      width: 35px;
+      margin: -10px auto 0;
+      font-size: 25px;
+      line-height: 25px;
+    }
+
+    .viz1-wrapper .center-text span.data-value {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    .viz1-wrapper .center-text span.data-suffix {
+      font-size: 35px;
+      line-height: 35px;
+    }
+}
+
+@media only screen and (max-width: 991px){
+    .viz1-wrapper svg {
+      height: 500px;
+    }
+    .viz1-wrapper .center-text {
+      width: 99px;
+      height: 99px;
+    }
+    .viz1-wrapper .center-text span.data-year {
+      width: 45px;
+      margin: -10px auto 0;
+      font-size: 25px;
+      line-height: 25px;
+    }
+
+    .viz1-wrapper .center-text span.data-value {
+      font-size: 65px;
+      line-height: 65px;
+    }
+
+    .viz1-wrapper .center-text span.data-suffix {
+      font-size: 25px;
+      line-height: 25px;
+    }
+}
+
+/*
+ * jquery.selectBoxIt.css 3.8.1
+ * Author: @gregfranko
+ */
+
+/*
+  Common CSS Properties
+  ---------------------
+  These properties will be applied to any themes that you use
+  */
+
+/* SelectBoxIt container */
+.selectboxit-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+}
+
+/* Styles that apply to all SelectBoxIt elements */
+.selectboxit-container * {
+  font: 14px Helvetica, Arial;
+  /* Prevents text selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  outline: none;
+  white-space: nowrap;
+  background-color: #484848;
+  opacity: .95;
+  color: #F0F2F6;
+}
+
+/* Button */
+.selectboxit-container .selectboxit {
+  width: 220px; /* Width of the dropdown button */
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+/* Height and Vertical Alignment of Text */
+.selectboxit-container span, .selectboxit-container .selectboxit-options a {
+  height: 30px; /* Height of the drop down */
+  line-height: 30px; /* Vertically positions the drop down text */
+  display: block;
+}
+
+/* Focus pseudo selector */
+.selectboxit-container .selectboxit:focus {
+  outline: 0;
+}
+
+/* Disabled Mouse Interaction */
+.selectboxit.selectboxit-disabled, .selectboxit-options .selectboxit-disabled {
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Button Text */
+.selectboxit-text {
+  text-indent: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+}
+
+.selectboxit .selectboxit-option-icon-container {
+  margin-left: 5px;
+}
+
+/* Options List */
+.selectboxit-container .selectboxit-options {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 100%;  /* Minimum Width of the dropdown list box options */
+  *width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: pointer;
+  display: none;
+  z-index: 9999999999999;
+  text-align: left;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Individual options */
+.selectboxit-option .selectboxit-option-anchor{
+  padding: 0 2px;
+}
+
+/* Individual Option Hover Action */
+.selectboxit-option .selectboxit-option-anchor:hover {
+  text-decoration: none;
+}
+
+/* Individual Option Optgroup Header */
+.selectboxit-option, .selectboxit-optgroup-header {
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  margin: 0;
+  list-style-type: none;
+}
+
+/* Drop Down optgroup headers */
+.selectboxit-optgroup-header {
+  font-weight: bold;
+}
+
+/* Drop Down optgroup header hover psuedo class */
+.selectboxit-optgroup-header:hover {
+  cursor: default;
+}
+
+/* Drop Down down arrow container */
+.selectboxit-arrow-container {
+  /* Positions the down arrow */
+  width: 30px;
+  position: absolute;
+  right: 0;
+}
+
+/* Drop Down down arrow */
+.selectboxit .selectboxit-arrow-container .selectboxit-arrow {
+  /* Horizontally centers the down arrow */
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+}
+
+/* Drop Down down arrow for jQueryUI and jQuery Mobile */
+.selectboxit .selectboxit-arrow-container .selectboxit-arrow.ui-icon {
+  top: 30%;
+}
+
+/* Drop Down individual option icon positioning */
+.selectboxit-option-icon-container {
+  float: left;
+}
+
+.selectboxit-container .selectboxit-option-icon {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Drop Down individual option icon positioning */
+.selectboxit-option-icon-url {
+  width: 18px;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  float: left;
+}
+
+.selectboxit-rendering {
+  display: inline-block !important;
+  *display: inline !important;
+  zoom: 1 !important;
+  visibility: visible !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+/* jQueryUI and jQuery Mobile compatability fix - Feel free to remove this style if you are not using jQuery Mobile */
+.jqueryui .ui-icon {
+  background-color: inherit;
+}
+
+/* Another jQueryUI and jQuery Mobile compatability fix - Feel free to remove this style if you are not using jQuery Mobile */
+.jqueryui .ui-icon-triangle-1-s {
+  background-position: -64px -16px;
+}
+
+/*
+Default Theme
+-------------
+Note: Feel free to remove all of the CSS underneath this line if you are not using the default theme
+*/
+.selectboxit-btn {
+  border-bottom-color: #b3b3b3;
+}
+
+.selectboxit-default-arrow {
+  width: 0;
+  height: 0;
+  border-top: 4px solid #E0E2E6;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.selectboxit-list {
+  background-color: #484848;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.selectboxit-list > .selectboxit-focus > .selectboxit-option-anchor {
+  background-color: #777;
+  background-repeat: repeat-x;
+}
+
+.selectboxit-list > .selectboxit-disabled > .selectboxit-option-anchor {
+  color: #999999;
+}
