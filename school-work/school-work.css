@@ -318,6 +318,9 @@ h1{
         align-items: center;
         text-align: center;
     }
+    .madewith{
+        text-align: center;
+    }
   .card-item{
     width: 100%;
     min-height: 240px;
