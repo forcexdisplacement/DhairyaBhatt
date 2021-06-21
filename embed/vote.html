@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(0, 0, 0);" lang="en">
+	<head>
+		<meta charset="utf-8">
+		
+        <!--             
+                    *******,******,            
+                .,,,.******,**********.        
+              ,,,,,,,,*****,************,      
+            .,,,,,,,,,,****,**************.    
+           ,,,,,,,,,,,,****,***************.   
+          ,.,,,,,,,,,,,,,**,****************,        ____    __                                ____        ___    ___    
+         */////,.,,,,,,,,**,*****************       /\  _`\ /\ \__                            /\  _`\     /\_ \  /\_ \    
+         //////////*,,,,,.*,*****************.      \ \,\L\_\ \ ,_\  _ __    __     __  __  __\ \ \L\ \___\//\ \ \//\ \    
+         ///////////////*..,*****************,       \/_\__ \\ \ \/ /\`'__\/'__`\  /\ \/\ \/\ \\ \ ,__/ __`\\ \ \  \ \ \   
+         /////////////////,*,,***************,         /\ \L\ \ \ \_\ \ \//\ \L\.\_\ \ \_/ \_/ \\ \ \/\ \L\ \\_\ \_ \_\ \_ 
+         ///////////////,******,,************.         \ `\____\ \__\\ \_\\ \__/.\_\\ \___x___/' \ \_\ \____//\____\/\____\ 
+         *///////////*,***********,**********           \/_____/\/__/ \/_/ \/__/\/_/ \/__//__/    \/_/\/___/ \/____/\/____/
+          *////////*,****************,******,  
+           //////*,********************,,**.   
+            ,//***************************.    
+              ,*************************,      
+                .*********************.        
+                   .,***********/*, 
+        -->
+
+		<title>Which team made the best arguments? - Embedded Poll | StrawPoll.com</title>
+
+		<meta name="description" content="What&#39;s your opinion? Vote now: SBPS, ASIS..." />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+		<meta name="robots" content="noindex, follow" />
+
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="app.css">
+	</head>
+	<body>
+		<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8XBS22"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W8XBS22');</script>
+<!-- End Google Tag Manager -->
+
+		
+		<div id="embed_poll" class="embed-container">
+	<div class="embed-wrapper" style="padding: 0;">
+		<div class="box poll-wrapper" style="box-shadow: none; margin-bottom: 0;" :class="{ 'is-hidden': showResults }">
+			<div class="block has-text-centered">
+				<h1 class="title is-size-3-desktop is-size-3-tablet is-size-3-mobile">
+					Which team made the best arguments?
+				</h1>
+			</div>
+
+			<div class="field embed-poll-main-wrapper">
+
+				<div class="block has-text-left">
+					Choose one answer:
+				</div>
+
+				<div class="block">
+					<div class="field is-poll-answer">
+						<b-radio
+							v-model="checkedAnswers"
+							name="poll_answer"
+							native-value="u1y35vuje91o"
+							@input="notification = null; notificationType = 'is-light'"
+						>
+							SBPS
+						</b-radio>
+					</div>
+					<div class="field is-poll-answer">
+						<b-radio
+							v-model="checkedAnswers"
+							name="poll_answer"
+							native-value="k76xhps2j46s"
+							@input="notification = null; notificationType = 'is-light'"
+						>
+							ASIS
+						</b-radio>
+					</div>
+				</div>
+
+
+				<div class="block" v-if="content.deadline" v-cloak>
+					<span v-if="content.poll.is_votable">
+						<vue-fontawesome icon="clock"></vue-fontawesome> Voting ends <timeago :datetime="content.deadline" :auto-update="60"></timeago>.
+					</span>
+					<span v-else>
+						<vue-fontawesome icon="clock"></vue-fontawesome> Voting ended <timeago :datetime="content.deadline" :auto-update="60"></timeago>.
+					</span>
+				</div> 
+
+				<div v-if="notification" class="block notification" :class="notificationType" v-cloak>
+					<span class="icon" v-if="notificationType == 'is-light'"><vue-fontawesome icon="spinner" class="fa-spin"></vue-fontawesome></span>
+					<span>{{ notification }}</span>
+				</div>
+
+				<div class="columns is-mobile is-action-buttons-wrapper block">
+					<div class="column is-half">
+						<button
+							:disabled="content.poll.is_votable ? false : true"
+							class="button is-primary is-fullwidth"
+							:class="isLoading ? 'is-loading' : ''"
+							@click="validateVote()"
+						>
+							Vote
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="has-text-centered field">
+				<small>
+					This voting is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+				</small>
+			</div>
+
+		</div>
+
+		
+
+
+
+		<script>
+			const store = { };
+			store.content = {"comments":0,"cookie_id":"o1u2baobu","created_at":"2021-06-21T04:44:14Z","creator":null,"deadline":"2021-06-25T18:30:00Z","has_webhooks":0,"id":"o1u2baobu","media":null,"original_deadline":null,"pin":null,"poll":{"is_points_eligible":1,"is_votable":1,"last_vote_at":null,"original_title":null,"poll_answers":[{"answer":"SBPS","id":"u1y35vuje91o","original_answer":null,"sorting":1,"type":"text","votes":0},{"answer":"ASIS","id":"k76xhps2j46s","original_answer":null,"sorting":2,"type":"text","votes":0}],"poll_info":{"captcha":1,"co":1,"creator_country":"in","creator_country_name":"India","description":null,"edited_at":null,"enter_name":0,"image":null,"ma":0,"ma_limit":null,"mip":0,"nsfw":0,"only_reg":0,"original_description":null,"show_results":0,"vpn":0},"private":0,"reset_at":null,"title":"Which team made the best arguments?","total_voters":0,"total_votes":0},"status":"active","title":"Which team made the best arguments?","type":"poll"};
+			store.meta = {
+				app_version: 1194,
+				csrf_token: "80d0f9614879d3bdf5fe983f4b049656219d2afc",
+				device_type: "desktop",
+				is_admin: true,
+				locale: "en-gb",
+				first_day_of_week: 0
+			};
+
+			function _getCookie(cname) {
+				var name = cname + "=";
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var ca = decodedCookie.split(';');
+				for(var i = 0; i <ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+		</script>
+
+		<script>
+			store.l = {"backend.message.poll_vote_error_already_user":"You already voted on this poll.","poll.validate.error":"Validation failed. Please reload the page and try again.","poll.validate.loading":"Validating vote...","poll.validate.select_answer":"Please select an answer.","toast.request_failed":"Request failed. Please try again."};
+		</script>
+
+		<!-- JS -->
+		<script src="app.js"></script>
+
+		<script src="polls.js"></script>
+
+		<script type="text/javascript">
+			var gaProperty = 'UA-91001217-1';
+			var disableStr = 'ga-disable-' + gaProperty;
+			if (document.cookie.indexOf(disableStr + '=true') > -1) {
+				window[disableStr] = true;
+			}
+			function gaOptout() {
+				document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+				window[disableStr] = true;
+			}
+		</script>
+	</body>
+</html>
