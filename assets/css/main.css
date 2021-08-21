@@ -4,6 +4,7 @@
     font-family: "AlphaCentauri";
 }
 
+
 @font-face{font-family:'Montserrat';src:url("fonts/Montserrat-Black.eot");
     src:local("☺"),url("fonts/Montserrat-Black.woff") format("woff"),url("fonts/Montserrat-Black.ttf") format("truetype"),url("fonts/Montserrat-Black.svg") format("svg");font-weight:900;font-style:normal}
 
@@ -27,7 +28,7 @@
     padding: 0;
     margin:0;
     justify-content:center;
-    z-index: 9999;
+    z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
     align-items:center;
     --foreground-col: rgb(255, 255, 255);
     --background-col: rgb(0, 0, 0);
@@ -127,7 +128,6 @@ html{
 --------------------------------*/
 
 
-/*---------popup---------*/
 
 
 
@@ -135,173 +135,37 @@ html{
 
 
 
-.popup:not(:target){
-    display: none;
-}
-  
-.popup:target{
-    width: 100%;
-    height: 100vh;
-    
-    display: flex;
-   
+
+
+
+
+/* popup */
+
+
+.popup{
     position: fixed;
-    top: 0;
-    right: 0;  
-}
-  
-.popup::before{
-    content: "";
-    box-sizing: border-box;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    height: 80%;
     background-color: #fff;
-  
-    position: fixed;
-    left: 0;
-    top: 50%;
+    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 0 1000px rgba(2, 2, 2, 0.95);
 }
-  
-.popup::after{
-    content: "";
-    width: 0;
-    height: 2px;
-    background-color: #f0f0f0;
-  
+.close{
     position: absolute;
-    top: 50%;
-    left: 0;
-    margin-top: -1px;}
-  
-.popup__container{
-    box-sizing: border-box;  
-    padding: 5% 15%;
-  
-    height: calc(100vh - 40px); /* 1 */
-    margin: auto; /* 1 */
-    overflow: auto; /* 1 */
-    overscroll-behavior: contain; /* 1 */
-}
-  
-.popup__title{
-    --rTitleMarginBottom: 1.5rem;
-    font-size: 1.5rem;
-}
-  
-.popup__close{
-    width: 2rem;
-    height: 2rem;
-  
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-  
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
-}
-  
-  /*
-  animation
-  */
-  
-.popup::before{
-    will-change: height, top;
-    animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
-}
-  
-.popup::after{
-    will-change: width, opacity;
-    animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
-}
-  
-@keyframes line-animation{
-  
-    0%{
-      width: 0;
-      opacity: 1;
-    }
-  
-    99%{
-      width: 100%;
-      opacity: 1;
-    }
-  
-    100%{
-      width: 100%;
-      opacity: 0;
-    }  
-}
-  
-@keyframes open-animation{
-  
-    0%{
-      height: 0;
-      top: 50%;
-    }
-  
-    100%{
-      height: 100vh;
-      top: 0;
-    }
-}
-  
-.popup__container{
-    animation: fade .5s ease-out 1.3s both;
-}
-  
-@keyframes fade{
-  
-    0%{
-      opacity: 0;
-    }
-  
-    100%{
-      opacity: 1;
-    }
-}
-  
-  /*
-  =====
-  DEMO
-  =====
-  */
-  
-body{
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
-    font-size: 1rem;
-    color: #222;
-    background-color: #512da8;
-    margin: 0;
-}
-  
-p{
-    margin: 0;
-    line-height: 1.5;
-}
-  
-p:nth-child(n+2){
-    margin-top: 1rem;
-}
-  
-.open-popup{
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    background-color: rgb(255, 0, 0);
     color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: .75rem 1.25rem;
-    border: 1px solid;
+    cursor: pointer;
 }
-  
-.page{
-    min-height: 100vh;
-    display: flex;
-}
-  
-.page__container{
-    max-width: 1200px;
-    padding-left: .75rem;
-    padding-right: .75rem;  
-    margin: auto;
+
+.popup.active{
+    visibility: hidden;
+    opacity: 0;
 }
 
 

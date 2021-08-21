@@ -111,7 +111,10 @@
 </div>
    
 
+<div class="popup">
+  <b class="close">x</b>
 
+</div>
 
 
 
@@ -307,7 +310,7 @@
                   </div>
                   <ul class="modal--options">
                     <li><a href="https://youtu.be/GJgvG2uNKcM">Latest YouTube Video</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">Contact Us </a></li>
                   </ul>
                 </div>
               </div>
@@ -349,6 +352,14 @@
      var popup = document.getElementById('poup');
      popup.classList.toggle('active');
    }
+</script>
+<script>
+  let popup = document.querySelector('.popup')
+  let close =document.querySelector('.close')
+
+  close.onclick =function(){
+    popup.classList.add('active')
+  }
 </script>
 
 </body>
